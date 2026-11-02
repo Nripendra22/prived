@@ -1,0 +1,1349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRIVED Life International Pvt Ltd</title>
+<link rel="icon" type="image/webp" href="img/favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1e3a5f;
+    --teal: #00c4a7;
+    --teal-dark: #00a08a;
+    --teal-light: #e0faf6;
+    --red: #e63946;
+    --white: #ffffff;
+    --off: #f7f9fc;
+    --text: #1a2332;
+    --muted: #5a6d82;
+    --border: rgba(0,0,0,0.08);
+    --font: "Poppins", sans-serif;
+    --serif: "Poppins", sans-serif;
+    --container: 80rem;
+    --page-pad: clamp(1rem, 4vw, 2rem);
+    --section-y: clamp(3rem, 8vw, 5rem);
+    --shadow: 0 0.25rem 1.5rem rgba(10,22,40,0.10);
+    --shadow-lg: 0 0.75rem 3rem rgba(10,22,40,0.18);
+  }
+
+  html { scroll-behavior: smooth; font-size: 100%; }
+  body { font-family: var(--font); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.5; }
+  img { max-width: 100%; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    padding: 0.5rem 0;
+  }
+  .topbar-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 var(--page-pad);
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .topbar a { color: rgba(255,255,255,0.7); text-decoration: none; margin-left: 1.5rem; transition: color .2s; }
+  .topbar a:hover { color: var(--teal); }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    border-bottom: 0.0625rem solid var(--border);
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: var(--shadow);
+  }
+  .header-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 var(--page-pad);
+    display: flex; align-items: center; min-height: 4.5rem; gap: clamp(1rem, 5vw, 4rem);
+  }
+  .logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; flex-shrink: 0; }
+  .logo img {
+    display: block;
+    height: clamp(3rem, 5vw, 4.25rem);
+    width: auto;
+  }
+
+  nav { display: flex; align-items: center; flex: 1; }
+  .nav-list { display: flex; align-items: center; list-style: none; gap: 0.25rem; flex: 1; }
+  .nav-item { position: relative; }
+  .nav-link {
+    display: flex; align-items: center; gap: 0.25rem;
+    padding: 0.5rem 0.875rem; border-radius: 0.375rem;
+    font-size: 1rem; font-weight: 500; color: var(--navy);
+    text-decoration: none; cursor: pointer; transition: background .2s, color .2s;
+    white-space: nowrap; border: none; background: none;
+  }
+  .nav-link:hover, .nav-item:hover .nav-link { background: var(--off); color: var(--teal); }
+  .nav-link::after {
+    content: ''; width: 0.45rem; height: 0.45rem; margin: -0.2rem 0 0 0.2rem;
+    border-right: 0.09375rem solid currentColor; border-bottom: 0.09375rem solid currentColor;
+    transform: rotate(45deg); transition: transform .2s;
+  }
+  .nav-item:hover .nav-link::after,
+  .nav-item:focus-within .nav-link::after,
+  .nav-item.menu-open .nav-link::after { transform: rotate(225deg); margin-top: 0.2rem; }
+
+  /* Dropdowns */
+  .dropdown {
+    position: absolute; top: 100%; left: 0;
+    background: var(--white); border-radius: 0.875rem;
+    border: 0.0625rem solid var(--border); box-shadow: var(--shadow-lg);
+    min-width: min(13.75rem, calc(100vw - 2rem)); max-width: calc(100vw - 2rem); padding: 0.75rem;
+    opacity: 0; visibility: hidden; transform: translateY(-0.375rem);
+    transition: opacity .22s, visibility .22s, transform .22s;
+    pointer-events: none; z-index: 200;
+  }
+  .dropdown.wide { width: min(35rem, calc(100vw - 2rem)); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.25rem; }
+  .dropdown.triple { width: min(36rem, calc(100vw - 2rem)); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown,
+  .nav-item.menu-open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+  .nav-item:nth-child(n + 3) .dropdown { left: 0; right: auto; }
+  .nav-link:focus-visible,
+  .drop-item:focus-visible,
+  .hamburger:focus-visible { outline: 0.125rem solid var(--teal); outline-offset: 0.125rem; }
+  .drop-item {
+    display: flex; align-items: flex-start; padding: 0.625rem 0.75rem;
+    border-radius: 0.5rem; text-decoration: none; transition: background .15s;
+  }
+  .drop-item:hover { background: var(--off); }
+  .drop-title { font-size: 0.84375rem; font-weight: 600; color: var(--navy); }
+  .drop-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.0625rem; }
+  .drop-divider { grid-column: 1 / -1; height: 0.0625rem; background: var(--border); margin: 0.25rem 0; }
+  .drop-heading { grid-column: 1 / -1; font-size: 0.6875rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.75rem; margin-top: 0.25rem; }
+
+  .nav-cta {
+    background: var(--red); color: white; padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem; font-size: 0.84375rem; font-weight: 600; text-decoration: none;
+    transition: background .2s; white-space: nowrap; flex-shrink: 0; margin-left: auto;
+  }
+  .nav-cta:hover { background: #c1121f; }
+
+  .hamburger { display: none; flex-direction: column; gap: 0.3125rem; cursor: pointer; padding: 0.25rem; background: none; border: none; margin-left: auto; }
+  .hamburger span { width: 1.375rem; height: 0.125rem; background: var(--navy); border-radius: 0.125rem; display: block; transition: .3s; }
+
+  /* ── SERVICE NAV STRIP ── */
+  .service-strip {
+    background: var(--off); border-bottom: 0.0625rem solid var(--border);
+  }
+  .strip-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 var(--page-pad);
+    display: flex; align-items: center; gap: 0.25rem; min-height: 3rem; overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .strip-link {
+    font-size: 0.8125rem; font-weight: 500; color: var(--muted); text-decoration: none;
+    padding: 0.375rem 0.875rem; border-radius: 0.375rem; white-space: nowrap; transition: .15s;
+  }
+  .strip-link:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .strip-cta {
+    margin-left: auto; flex-shrink: 0;
+    border: 0.09375rem solid var(--red); color: var(--red); font-size: 0.8125rem; font-weight: 600;
+    padding: 0.3rem 1rem; border-radius: 0.375rem; text-decoration: none; transition: .2s;
+  }
+  .strip-cta:hover { background: var(--red); color: white; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #0d2d54 100%);
+    position: relative; overflow: hidden; padding: clamp(4rem, 9vw, 6rem) var(--page-pad) clamp(3.5rem, 8vw, 5rem);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,196,167,0.15) 0%, transparent 60%);
+  }
+  .hero-grid {
+    max-width: var(--container); margin: 0 auto;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr); gap: clamp(2rem, 6vw, 4rem); align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0,196,167,0.15); border: 0.0625rem solid rgba(0,196,167,0.3);
+    color: var(--teal); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+    padding: 0.375rem 0.875rem; border-radius: 999rem; margin-bottom: 1.5rem; text-transform: uppercase;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: white; line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: var(--teal); font-style: normal; }
+  .hero p {
+    font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 2rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal); color: var(--navy); font-size: 0.9375rem; font-weight: 700;
+    padding: 0.875rem 2rem; border-radius: 0.625rem; text-decoration: none; transition: .2s;
+  }
+  .btn-primary:hover { background: #00e0c3; transform: translateY(-0.0625rem); }
+  .btn-outline {
+    border: 0.09375rem solid rgba(255,255,255,0.3); color: white; font-size: 0.9375rem; font-weight: 500;
+    padding: 0.875rem 2rem; border-radius: 0.625rem; text-decoration: none; transition: .2s;
+    backdrop-filter: blur(0.25rem);
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.07); }
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3rem; padding-top: 2rem;
+    border-top: 0.0625rem solid rgba(255,255,255,0.1);
+  }
+  .hero-stat-num { font-size: 1.75rem; font-weight: 700; color: var(--teal); }
+  .hero-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.125rem; }
+  .hero-visual { position: relative; }
+  .hero-img-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, clamp(10rem, 18vw, 12.5rem)); gap: 0.75rem; }
+  .hero-img-card {
+    border-radius: 0.875rem; overflow: hidden; position: relative;
+    background: var(--navy-light);
+  }
+  .hero-img-card:first-child { grid-row: 1 / 3; }
+  .hero-img-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .hero-img-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 1.5rem 1rem 0.75rem;
+    color: white; font-size: 0.8125rem; font-weight: 600;
+  }
+  .float-badge {
+    position: absolute; top: -1rem; right: -1rem;
+    background: var(--red); color: white; border-radius: 0.75rem;
+    padding: 0.75rem 1rem; font-size: 0.75rem; font-weight: 700;
+    box-shadow: 0 0.25rem 1rem rgba(230,57,70,0.35); z-index: 2;
+  }
+  .float-badge span { font-size: 1.375rem; display: block; line-height: 1; }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: var(--section-y) var(--page-pad); }
+  .section-inner { max-width: var(--container); margin: 0 auto; }
+  .section-label { font-size: 0.75rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--navy); line-height: 1.2; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 37.5rem; line-height: 1.7; }
+
+  /* ── SERVICES GRID ── */
+  .services-bg { background: var(--off); }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; margin-bottom: clamp(2rem, 5vw, 3rem); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.5rem; }
+  .service-card {
+    background: white; border-radius: 1rem; overflow: hidden;
+    border: 0.0625rem solid var(--border); transition: transform .25s, box-shadow .25s;
+    cursor: pointer; text-decoration: none; display: flex; flex-direction: column;
+  }
+  .service-card:hover { transform: translateY(-0.25rem); box-shadow: var(--shadow-lg); }
+  .service-img { height: clamp(11rem, 20vw, 12.5rem); overflow: hidden; position: relative; }
+  .service-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .service-card:hover .service-img img { transform: scale(1.05); }
+  .service-tag {
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    background: var(--teal); color: white; font-size: 0.6875rem; font-weight: 700;
+    padding: 0.25rem 0.625rem; border-radius: 999rem; letter-spacing: 0.04em;
+  }
+  .service-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .service-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+  .service-name { font-size: 1.0625rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+  .service-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.6; flex: 1; }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    margin-top: 1.25rem; font-size: 0.8125rem; font-weight: 600; color: var(--teal);
+  }
+
+  /* ── CAPABILITIES ── */
+  .capabilities-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 4rem); align-items: center; }
+  .capabilities-img { position: relative; border-radius: 1.25rem; overflow: hidden; }
+  .capabilities-img img { width: 100%; height: clamp(22rem, 45vw, 31.25rem); object-fit: cover; display: block; }
+  .cap-floating {
+    position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+    background: rgba(10,22,40,0.9); backdrop-filter: blur(0.5rem);
+    border-radius: 0.75rem; padding: 1rem 1.25rem; color: white;
+    display: flex; gap: 1.5rem;
+  }
+  .cap-stat { text-align: center; }
+  .cap-stat-num { font-size: 1.375rem; font-weight: 700; color: var(--teal); }
+  .cap-stat-label { font-size: 0.6875rem; color: rgba(255,255,255,0.6); margin-top: 0.125rem; }
+  .cap-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .cap-list li {
+    display: flex; gap: 0.875rem; padding: 1rem 1.25rem; background: var(--off);
+    border-radius: 0.75rem; border: 0.0625rem solid var(--border); transition: .2s;
+  }
+  .cap-list li:hover { border-color: var(--teal); background: var(--teal-light); }
+  .cap-check {
+    width: 1.75rem; height: 1.75rem; background: var(--teal); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    color: white; font-size: 0.875rem; margin-top: 0.125rem;
+  }
+  .cap-item-title { font-size: 0.9375rem; font-weight: 600; color: var(--navy); }
+  .cap-item-sub { font-size: 0.8125rem; color: var(--muted); margin-top: 0.125rem; }
+
+  /* ── ACCORDION ── */
+  .accordion-bg { background: var(--navy); }
+  .accordion-bg .section-title { color: white; }
+  .accordion-bg .section-sub { color: rgba(255,255,255,0.6); }
+  .accordion-bg .section-label { color: var(--teal); }
+  .accordion-layout { display: grid; grid-template-columns: minmax(18rem, 1fr) minmax(0, 1.4fr); gap: clamp(2rem, 7vw, 5rem); align-items: start; margin-top: 3rem; }
+  .accordion-img-wrap { position: sticky; top: 6rem; border-radius: 1.25rem; overflow: hidden; }
+  .accordion-img-wrap img { width: 100%; height: clamp(24rem, 48vw, 32.5rem); object-fit: cover; display: block; border-radius: 1.25rem; }
+  .accordion-list { display: flex; flex-direction: column; gap: 0; }
+  .accordion-item {
+    border-bottom: 0.0625rem solid rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  .accordion-item:first-child { border-top: 0.0625rem solid rgba(255,255,255,0.1); }
+  .accordion-trigger {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 0; cursor: pointer; background: none; border: none;
+    text-align: left; gap: 1rem;
+  }
+  .accordion-trigger:hover .acc-title { color: var(--teal); }
+  .acc-num { font-size: 0.6875rem; font-weight: 700; color: var(--teal); letter-spacing: 0.06em; flex-shrink: 0; }
+  .acc-title { font-size: 1rem; font-weight: 600; color: white; flex: 1; transition: color .2s; }
+  .acc-icon {
+    width: 1.75rem; height: 1.75rem; border-radius: 50%;
+    border: 0.09375rem solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: .25s;
+  }
+  .acc-icon svg { width: 0.875rem; height: 0.875rem; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 2; transition: transform .25s; }
+  .accordion-item.open .acc-icon { background: var(--teal); border-color: var(--teal); }
+  .accordion-item.open .acc-icon svg { stroke: white; transform: rotate(45deg); }
+  .accordion-body {
+    max-height: 0; overflow: hidden; transition: max-height .4s ease;
+  }
+  .accordion-item.open .accordion-body { max-height: 25rem; }
+  .accordion-content { padding: 0 0 1.25rem; font-size: 0.90625rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+  .accordion-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.875rem; }
+  .acc-tag {
+    font-size: 0.75rem; color: var(--teal); background: rgba(0,196,167,0.1);
+    border: 0.0625rem solid rgba(0,196,167,0.25); padding: 0.2rem 0.625rem; border-radius: 999rem;
+  }
+
+  /* ── THERAPEUTIC AREAS ── */
+  .therapy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1rem; margin-top: 3rem; }
+  .therapy-card {
+    border-radius: 0.875rem; padding: 1.5rem; border: 0.0625rem solid var(--border);
+    background: white; transition: .2s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .therapy-card::before {
+    content: ''; position: absolute; inset: 0; opacity: 0; transition: .3s;
+    background: linear-gradient(135deg, var(--teal-light), transparent);
+  }
+  .therapy-card:hover { border-color: var(--teal); transform: translateY(-0.125rem); }
+  .therapy-card:hover::before { opacity: 1; }
+  .therapy-emoji { font-size: 2rem; margin-bottom: 0.875rem; display: block; }
+  .therapy-name { font-size: 0.9375rem; font-weight: 700; color: var(--navy); margin-bottom: 0.375rem; }
+  .therapy-count { font-size: 0.8125rem; color: var(--muted); }
+  .therapy-arrow { position: absolute; bottom: 1rem; right: 1rem; color: var(--teal); font-size: 1.125rem; opacity: 0; transition: .2s; }
+  .therapy-card:hover .therapy-arrow { opacity: 1; }
+
+  /* ── NUMBERS ── */
+  .numbers-bg { background: var(--teal); }
+  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: 2rem; text-align: center; }
+  .num-val { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--navy); font-family: var(--serif); }
+  .num-label { font-size: 0.875rem; color: var(--navy-mid); margin-top: 0.375rem; opacity: 0.8; }
+
+  /* ── PROCESS ── */
+  .process-bg { background: var(--off); }
+  .process-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 3rem; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 2rem; left: 10%; right: 10%; height: 0.125rem;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--teal-dark) 100%); z-index: 0;
+  }
+  .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
+  .step-circle {
+    width: 4rem; height: 4rem; border-radius: 50%;
+    background: white; border: 0.1875rem solid var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.375rem; margin-bottom: 1.25rem; transition: .2s;
+    box-shadow: 0 0 0 0.375rem var(--off);
+  }
+  .process-step:hover .step-circle { background: var(--teal); }
+  .step-num { font-size: 0.6875rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.375rem; }
+  .step-title { font-size: 0.875rem; font-weight: 700; color: var(--navy); margin-bottom: 0.375rem; }
+  .step-desc { font-size: 0.78125rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, #0f3460 100%);
+    padding: var(--section-y) var(--page-pad); text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0,196,167,0.2) 0%, transparent 60%);
+  }
+  .cta-inner { max-width: 43.75rem; margin: 0 auto; position: relative; z-index: 1; }
+  .cta-banner h2 { font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.75rem); color: white; margin-bottom: 1rem; }
+  .cta-banner p { color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 2.5rem; }
+  .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-teal { background: var(--teal); color: var(--navy); font-weight: 700; padding: 1rem 2.25rem; border-radius: 0.625rem; text-decoration: none; transition: .2s; font-size: 0.9375rem; }
+  .btn-teal:hover { background: #00e0c3; transform: translateY(-0.0625rem); }
+  .btn-ghost { border: 0.09375rem solid rgba(255,255,255,0.3); color: white; padding: 1rem 2.25rem; border-radius: 0.625rem; text-decoration: none; transition: .2s; font-size: 0.9375rem; }
+  .btn-ghost:hover { border-color: white; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: clamp(3rem, 7vw, 4rem) var(--page-pad) 2rem; }
+  .footer-inner { max-width: var(--container); margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: minmax(16rem, 2fr) repeat(4, minmax(8rem, 1fr)); gap: clamp(1.5rem, 4vw, 3rem); padding-bottom: 3rem; border-bottom: 0.0625rem solid rgba(255,255,255,0.1); }
+  .footer-brand p { font-size: 0.875rem; line-height: 1.7; margin-top: 1rem; max-width: 16.25rem; }
+  .footer-col-title { font-size: 0.8125rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-links a { font-size: 0.84375rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color .15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.78125rem; flex-wrap: wrap; gap: 1rem; }
+  .footer-legal { display: flex; gap: 1.5rem; }
+  .footer-legal a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+  /* MOBILE */
+  @media (max-width: 68.75rem) {
+    .header-inner { position: relative; }
+    nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: var(--page-pad);
+      right: var(--page-pad);
+      background: var(--white);
+      border: 0.0625rem solid var(--border);
+      max-height: calc(100vh - 5rem);
+      max-height: calc(100dvh - 5rem);
+      overflow-y: auto;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow-lg);
+      padding: 0.75rem;
+    }
+    header.menu-open nav { display: block; }
+    .nav-list { flex-direction: column; align-items: stretch; }
+    .nav-link { width: 100%; justify-content: space-between; }
+    .dropdown,
+    .dropdown.wide,
+    .dropdown.triple {
+      display: none;
+      position: static;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      box-shadow: none;
+      border-radius: 0.5rem;
+      margin-top: 0.25rem;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+      grid-template-columns: 1fr;
+    }
+    .nav-item.mobile-open .dropdown { display: grid; }
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown { opacity: 1; visibility: visible; }
+    .nav-item .dropdown { pointer-events: auto; }
+    .nav-link::after { flex-shrink: 0; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 64rem) {
+    .hero-grid,
+    .capabilities-grid,
+    .accordion-layout { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .process-steps { grid-template-columns: repeat(3, 1fr); row-gap: 2rem; }
+    .process-steps::before { display: none; }
+  }
+  @media (max-width: 48rem) {
+    .topbar { display: none; }
+    .hero-visual { display: none; }
+    .accordion-img-wrap { display: none; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr; }
+    .strip-inner { gap: 0; }
+    .cap-floating { position: static; border-radius: 0; flex-wrap: wrap; }
+    .footer-bottom, .footer-legal { justify-content: flex-start; }
+  }
+  @media (max-width: 30rem) {
+    .hero-btns,
+    .cta-btns,
+    .hero-stats { flex-direction: column; }
+    .btn-primary,
+    .btn-outline,
+    .btn-teal,
+    .btn-ghost { width: 100%; text-align: center; }
+    .process-steps { grid-template-columns: 1fr; }
+    .footer-legal { flex-direction: column; gap: 0.75rem; }
+  }
+
+  /* Editorial design system shared with the company pages */
+  :root {
+    --container: 76rem;
+    --teal-dark: #008f7c;
+    --teal-light: #e5f8f4;
+    --border: rgba(10,22,40,0.12);
+  }
+  .topbar { letter-spacing: 0.03em; }
+  header { background: rgba(255,255,255,0.96); backdrop-filter: blur(1rem); box-shadow: 0 0.25rem 1.5rem rgba(10,22,40,0.06); }
+  .header-inner { min-height: 5rem; gap: clamp(1rem, 3vw, 2rem); }
+  .nav-list { gap: 0.125rem; }
+  .nav-link { padding: 0.625rem 0.75rem; font-size: 0.875rem; }
+  .nav-link:hover, .nav-item:hover .nav-link { background: transparent; color: var(--teal-dark); }
+  .nav-cta { background: var(--navy); border-radius: 0.55rem; padding: 0.7rem 1.2rem; }
+  .nav-cta:hover { background: var(--teal-dark); }
+  .dropdown { border-radius: 0.625rem; box-shadow: 0 1rem 2.5rem rgba(10,22,40,0.14); }
+
+  .hero {
+    padding: clamp(4.5rem, 9vw, 8rem) var(--page-pad) clamp(5rem, 10vw, 8rem);
+    background: var(--navy);
+    isolation: isolate;
+  }
+  .hero::before {
+    z-index: -1;
+    background: radial-gradient(circle at 75% 15%, rgba(0,196,167,0.16), transparent 34rem);
+  }
+  .hero::after {
+    position: absolute;
+    z-index: -1;
+    right: -12rem;
+    top: -22rem;
+    width: 44rem;
+    height: 44rem;
+    border: 0.0625rem solid rgba(0,196,167,0.22);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4rem rgba(0,196,167,0.025), 0 0 0 9rem rgba(0,196,167,0.02);
+    content: '';
+    pointer-events: none;
+  }
+  .hero-grid { max-width: var(--container); grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.82fr); gap: clamp(3rem, 8vw, 8rem); }
+  .hero-badge {
+    display: flex;
+    width: fit-content;
+    gap: 0.75rem;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--teal);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+  }
+  .hero-badge::before { width: 2rem; height: 0.0625rem; background: currentColor; content: ''; animation: none; }
+  .hero h1 { max-width: 47rem; margin-bottom: 1.4rem; font-size: clamp(3rem, 7.5vw, 6.5rem); font-weight: 500; letter-spacing: -0.075em; line-height: 0.99; }
+  .hero p { max-width: 37rem; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.65; }
+  .hero-btns { gap: 0.875rem; }
+  .btn-primary, .btn-outline, .btn-teal, .btn-ghost { border-radius: 0.4rem; }
+  .btn-primary { padding: 0.95rem 1.4rem; }
+  .btn-outline { padding: 0.95rem 1.4rem; }
+  .hero-stats { gap: clamp(1rem, 2.5vw, 2rem); margin-top: 2.5rem; }
+  .hero-stat-num { font-variant-numeric: tabular-nums; font-size: 1.5rem; }
+  .hero-stat-label { max-width: 7rem; line-height: 1.4; }
+  .hero-visual { position: relative; z-index: 1; display: block; padding: 0 0 2.25rem 2.25rem; }
+  .hero-visual::before { position: absolute; z-index: -1; inset: 2rem 2rem 0 0; border: 0.0625rem solid rgba(0,196,167,0.55); border-radius: 1.25rem; content: ''; }
+  .hero-img-grid { display: block; height: auto; }
+  .hero-img-card { display: none; }
+  .hero-img-card:first-child { display: block; height: clamp(20rem, 37vw, 31rem); grid-row: auto; border-radius: 1.1rem; }
+  .hero-img-card img { opacity: 1; }
+  .hero-img-label { display: none; }
+  .float-badge { top: auto; right: 0; bottom: 0; max-width: 13rem; padding: 1rem 1.1rem; border-radius: 0; background: var(--teal); color: var(--navy); box-shadow: none; font-size: 0.78rem; line-height: 1.45; }
+  .float-badge span { display: block; font-size: 0.78rem; line-height: inherit; }
+
+  .section { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(5rem, 10vw, 9rem); }
+  .section-label { color: var(--teal-dark); font-size: 0.75rem; letter-spacing: 0.14em; }
+  .section-title { max-width: 46rem; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 500; letter-spacing: -0.07em; line-height: 1.05; }
+  .services-header { align-items: end; margin-bottom: 3.5rem; }
+  .services-grid { gap: 1rem; }
+  .service-card { border-radius: 0.25rem; border-color: var(--border); }
+  .service-img { height: clamp(12rem, 20vw, 15rem); }
+  .service-tag { top: 1rem; left: 1rem; padding: 0.35rem 0.65rem; border-radius: 0.2rem; background: var(--navy); color: #fff; }
+  .service-body { padding: 1.4rem; }
+  .service-icon { display: none; }
+  .service-name { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.025em; }
+  .service-link { color: var(--teal-dark); }
+
+  .numbers-bg.section { padding: clamp(2.5rem, 5vw, 4rem) var(--page-pad) !important; background: var(--teal-light); }
+  .numbers-grid { gap: 0; }
+  .numbers-grid > div { padding: 0.75rem 1rem; }
+  .numbers-grid > div + div { border-left: 0.0625rem solid rgba(10,22,40,0.12); }
+  .num-val { color: var(--navy); font-size: clamp(2.2rem, 4vw, 3.4rem); letter-spacing: -0.06em; }
+  .num-label { color: var(--muted); font-size: 0.78rem; }
+
+  .capabilities-img { border-radius: 0.25rem; }
+  .cap-floating { border-radius: 0.25rem; }
+  .cap-list li { border-radius: 0.25rem; }
+  .therapy-card { border-radius: 0.25rem; }
+  .therapy-card::before { pointer-events: none; }
+  .accordion-layout { gap: clamp(2rem, 6vw, 5rem); }
+  .accordion-img-wrap, .accordion-img-wrap img { border-radius: 0.25rem; }
+  .accordion-trigger:focus-visible { outline: 0.125rem solid var(--teal); outline-offset: 0.25rem; }
+  .cta-banner { padding-top: clamp(5rem, 9vw, 8rem); padding-bottom: clamp(5rem, 9vw, 8rem); }
+  .cta-banner h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 500; letter-spacing: -0.07em; line-height: 1.05; }
+  .cta-banner p { max-width: 42rem; margin-inline: auto; }
+  footer { padding-top: clamp(3rem, 7vw, 5rem); }
+
+  @media (max-width: 64rem) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { max-width: 38rem; }
+  }
+  @media (max-width: 48rem) {
+    .hero-visual { display: block; max-width: 34rem; margin-inline: auto; }
+    .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .numbers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .numbers-grid > div:nth-child(3) { border-left: 0; }
+    .numbers-grid > div:nth-child(n + 3) { border-top: 0.0625rem solid rgba(10,22,40,0.12); }
+    .services-header { align-items: start; }
+  }
+  @media (max-width: 30rem) {
+    .hero-visual { padding-left: 1rem; padding-bottom: 1.5rem; }
+    .hero-visual::before { inset: 1rem 1rem 0 0; }
+    .hero-stats { gap: 1rem; }
+    .numbers-grid > div { padding-inline: 0.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+
+  /* Modern, consistent homepage navigation */
+  header {
+    background: rgba(255,255,255,0.94);
+    border-bottom-color: rgba(10,22,40,0.08);
+    box-shadow: 0 0.5rem 2rem rgba(10,22,40,0.06);
+    backdrop-filter: blur(1rem);
+  }
+  .header-inner { min-height: 5.25rem; gap: clamp(1rem, 3vw, 2rem); }
+  .logo { padding: 0.25rem 0; }
+  #primary-navigation { justify-content: flex-end; min-width: 0; }
+  .nav-list { justify-content: flex-end; gap: clamp(0.125rem, 0.5vw, 0.5rem); }
+  .nav-item { padding-block: 0.7rem; }
+  .nav-item::after { position: absolute; top: 100%; left: 0; right: 0; height: 0.75rem; content: ''; }
+  .nav-link {
+    position: relative;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.55rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+  .nav-link:hover,
+  .nav-item:hover .nav-link,
+  .nav-item:focus-within .nav-link,
+  .nav-item.menu-open .nav-link { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-link::after {
+    width: 0.42rem;
+    height: 0.42rem;
+    margin-left: 0.3rem;
+    border-width: 0.09rem;
+  }
+  .dropdown {
+    top: calc(100% + 0.45rem);
+    padding: 0.75rem;
+    border: 0.0625rem solid rgba(10,22,40,0.08);
+    border-radius: 0.8rem;
+    box-shadow: 0 1.25rem 3.5rem rgba(10,22,40,0.16);
+    transform: translateY(0.5rem) scale(0.985);
+    transform-origin: top left;
+  }
+  .dropdown.wide { width: min(32rem, calc(100vw - 2rem)); }
+  .dropdown.triple { width: min(36rem, calc(100vw - 2rem)); }
+  .nav-item:hover .dropdown,
+  .nav-item:focus-within .dropdown,
+  .nav-item.menu-open .dropdown { transform: translateY(0) scale(1); }
+  .drop-item { padding: 0.75rem; border-radius: 0.55rem; transition: background 0.18s ease, transform 0.18s ease; }
+  .drop-item:hover { background: var(--teal-light); transform: translateX(0.125rem); }
+  .drop-title { font-size: 0.84rem; }
+  .drop-sub { font-size: 0.74rem; line-height: 1.45; }
+  .drop-heading { color: var(--teal-dark); font-size: 0.66rem; letter-spacing: 0.12em; }
+  .drop-divider { background: rgba(10,22,40,0.1); }
+  .hamburger {
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    border: 0.0625rem solid var(--border);
+    border-radius: 0.625rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .hamburger:hover { background: var(--teal-light); border-color: rgba(0,143,124,0.3); }
+  .hamburger span { width: 1.25rem; }
+
+  @media (max-width: 68.75rem) {
+    .header-inner { min-height: 4.75rem; }
+    #primary-navigation {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: var(--page-pad);
+      right: var(--page-pad);
+      max-height: calc(100vh - 6rem);
+      max-height: calc(100dvh - 6rem);
+      overflow-y: auto;
+      padding: 0.75rem;
+      border: 0.0625rem solid rgba(10,22,40,0.08);
+      border-radius: 0.85rem;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 1.25rem 3.5rem rgba(10,22,40,0.16);
+      backdrop-filter: blur(1rem);
+    }
+    header.menu-open #primary-navigation { display: block; }
+    .nav-list { display: flex; flex-direction: column; align-items: stretch; gap: 0.125rem; }
+    .nav-item { padding: 0; }
+    .nav-item::after { display: none; }
+    .nav-link { width: 100%; justify-content: space-between; padding: 0.8rem 0.9rem; }
+    .dropdown,
+    .dropdown.wide,
+    .dropdown.triple {
+      display: none;
+      position: static;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      margin-top: 0.2rem;
+      padding: 0.5rem;
+      border: 0;
+      border-radius: 0.6rem;
+      background: var(--off);
+      box-shadow: none;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      pointer-events: auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .dropdown.triple { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .nav-item.mobile-open .dropdown { display: grid; }
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown { opacity: 1; visibility: visible; }
+    .nav-link::after { flex-shrink: 0; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 32rem) {
+    .dropdown,
+    .dropdown.wide,
+    .dropdown.triple { grid-template-columns: 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="header.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>🌐 Serving 40+ countries — PRIVED Life International Pvt Ltd — CDMO Partner</span>
+    <div>
+      <a href="tel:+18000000000">+1 (800) 000-0000</a>
+      <a href="mailto:info@privedlife.com">info@privedlife.com</a>
+      <a href="#contact">Investor Relations</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="img/header.png" alt="PRIVED Life">
+    </a>
+
+    <nav id="primary-navigation" aria-label="Primary navigation">
+      <ul class="nav-list">
+
+        <!-- About Us -->
+        <li class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="about-menu">About Us</button>
+          <div class="dropdown wide" id="about-menu">
+            <a href="our-story.html" class="drop-item"><div><div class="drop-title">Our Story</div><div class="drop-sub">History and vision since 1998</div></div></a>
+            <a href="mission-values.html" class="drop-item"><div><div class="drop-title">Mission & Values</div><div class="drop-sub">What drives everything we do</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Leadership Team</div><div class="drop-sub">Meet our executive directors</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Global Presence</div><div class="drop-sub">Operations in 14 countries</div></div></a>
+            <a href="awards-recognition.html" class="drop-item"><div><div class="drop-title">Awards & Recognition</div><div class="drop-sub">Industry certifications & honors</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Press & Media</div><div class="drop-sub">News releases and media kit</div></div></a>
+          </div>
+        </li>
+
+        <!-- Facilities -->
+        <li class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="facilities-menu">Facilities</button>
+          <div class="dropdown wide" id="facilities-menu">
+            <a href="#" class="drop-item"><div><div class="drop-title">R&D Laboratories</div><div class="drop-sub">State-of-the-art research labs</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Manufacturing Plants</div><div class="drop-sub">GMP-certified production units</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">QC & Testing Centers</div><div class="drop-sub">Analytical & release testing</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Cold Chain Warehousing</div><div class="drop-sub">Temperature-controlled logistics</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Green Facilities</div><div class="drop-sub">Sustainable manufacturing</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Site Locations</div><div class="drop-sub">India, USA, Europe, Asia</div></div></a>
+          </div>
+        </li>
+
+        <!-- Services -->
+        <li class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="services-menu">Services</button>
+          <div class="dropdown triple" id="services-menu">
+            <div class="drop-heading">Drug Discovery</div>
+            <a href="#" class="drop-item"><div><div class="drop-title">Target Identification</div><div class="drop-sub">Biological target screening</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Hit-to-Lead</div><div class="drop-sub">Compound library screening</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Lead Optimization</div><div class="drop-sub">ADMET & PK/PD profiling</div></div></a>
+            <div class="drop-divider"></div>
+            <div class="drop-heading">Drug Development</div>
+            <a href="#" class="drop-item"><div><div class="drop-title">Formulation Dev</div><div class="drop-sub">Solid, liquid & semi-solid forms</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Regulatory Affairs</div><div class="drop-sub">IND, NDA, ANDA filings</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Clinical Trials</div><div class="drop-sub">Phase I–III management</div></div></a>
+            <div class="drop-divider"></div>
+            <div class="drop-heading">Manufacturing</div>
+            <a href="#" class="drop-item"><div><div class="drop-title">API Manufacturing</div><div class="drop-sub">GMP bulk active synthesis</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Drug Product Mfg</div><div class="drop-sub">Dosage form production</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">ADC Services</div><div class="drop-sub">Antibody drug conjugates</div></div></a>
+          </div>
+        </li>
+
+        <!-- Resources -->
+        <li class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="resources-menu">Resources</button>
+          <div class="dropdown wide" id="resources-menu">
+            <a href="#" class="drop-item"><div><div class="drop-title">White Papers</div><div class="drop-sub">Technical & regulatory guides</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Case Studies</div><div class="drop-sub">Real-world project outcomes</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Webinars</div><div class="drop-sub">On-demand expert sessions</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Publications</div><div class="drop-sub">Peer-reviewed research</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Regulatory Library</div><div class="drop-sub">FDA, EMA, WHO guidance</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Events & Conferences</div><div class="drop-sub">Upcoming industry events</div></div></a>
+          </div>
+        </li>
+
+        <!-- Careers -->
+        <li class="nav-item">
+          <button class="nav-link" aria-expanded="false" aria-controls="careers-menu">Careers</button>
+          <div class="dropdown" id="careers-menu">
+            <a href="#" class="drop-item"><div><div class="drop-title">Open Positions</div><div class="drop-sub">Browse current opportunities</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Graduate Programs</div><div class="drop-sub">Internships & fellowships</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Life at PRIVED</div><div class="drop-sub">Culture, benefits & perks</div></div></a>
+            <a href="#" class="drop-item"><div><div class="drop-title">Talent Network</div><div class="drop-sub">Stay informed of new roles</div></div></a>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+
+    <button class="hamburger" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- SERVICE STRIP -->
+<!-- <div class="service-strip">
+  <div class="strip-inner">
+    <a href="#" class="strip-link">Drug Discovery</a>
+    <a href="#" class="strip-link">Drug Substance</a>
+    <a href="#" class="strip-link">Drug Product</a>
+    <a href="#" class="strip-link">Antibody Drug Conjugates</a>
+    <a href="#" class="strip-link">Specialized Offerings</a>
+    <a href="#" class="strip-link">Nutrition Solutions</a>
+    <a href="#" class="strip-cta">Why Partner With Us?</a>
+  </div>
+</div> -->
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">Trusted CDMO Partner</div>
+      <h1>Advancing <em>Science</em> from Discovery to <em>Patient</em></h1>
+      <p>PRIVED Life International delivers integrated drug discovery, development, and manufacturing solutions — bridging the gap between innovative research and life-changing therapies.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#contact" class="btn-outline">Request a Proposal</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">25+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Successful Projects</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Countries Served</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">ISO</div>
+          <div class="hero-stat-label">Certified & FDA Approved</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <figure class="hero-img-grid">
+        <div class="float-badge"><span>Integrated expertise</span>From discovery through manufacturing</div>
+        <div class="hero-img-card">
+          <img src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Scientist working carefully in a pharmaceutical research laboratory">
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="section numbers-bg" style="padding: 3rem var(--page-pad);">
+  <div class="section-inner">
+    <div class="numbers-grid">
+      <div><div class="num-val">3,200+</div><div class="num-label">Molecules Synthesized</div></div>
+      <div><div class="num-val">150+</div><div class="num-label">Regulatory Filings Approved</div></div>
+      <div><div class="num-val">98%</div><div class="num-label">On-time Delivery Rate</div></div>
+      <div><div class="num-val">14</div><div class="num-label">Global Facilities</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services-bg" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Diverse Range of Drug Discovery,<br>Development & Manufacturing</h2>
+      </div>
+      <a href="#" class="btn-primary" style="flex-shrink:0">View All Services →</a>
+    </div>
+    <div class="services-grid">
+      <a href="#" class="service-card">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Drug Discovery">
+          <span class="service-tag">Discovery</span>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🔬</div>
+          <div class="service-name">Drug Discovery</div>
+          <div class="service-desc">From target identification and validation to hit-to-lead optimization, our discovery platforms accelerate the earliest stages of drug development with AI-powered screening.</div>
+          <div class="service-link">Learn More →</div>
+        </div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/954585/pexels-photo-954585.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Drug Substance">
+          <span class="service-tag">Substance</span>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">⚗️</div>
+          <div class="service-name">Drug Substance (API)</div>
+          <div class="service-desc">End-to-end API synthesis from milligrams to metric-ton scale, with robust process chemistry, salt screening, and polymorph characterization under full GMP compliance.</div>
+          <div class="service-link">Learn More →</div>
+        </div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Drug Product">
+          <span class="service-tag">Product</span>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">💊</div>
+          <div class="service-name">Drug Product</div>
+          <div class="service-desc">Comprehensive dosage form development and manufacturing — tablets, capsules, injectables, biologics — from early formulation through commercial supply.</div>
+          <div class="service-link">Learn More →</div>
+        </div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ADC">
+          <span class="service-tag">Biologics</span>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🧬</div>
+          <div class="service-name">Antibody Drug Conjugates</div>
+          <div class="service-desc">Specialized ADC development services including linker-payload synthesis, antibody conjugation, analytical characterization, and GMP clinical manufacturing.</div>
+          <div class="service-link">Learn More →</div>
+        </div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Specialized">
+          <span class="service-tag">Specialized</span>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🎯</div>
+          <div class="service-name">Specialized Offerings</div>
+          <div class="service-desc">High-potency APIs, controlled substances, peptide synthesis, oligonucleotides, and other niche capabilities backed by dedicated containment infrastructure.</div>
+          <div class="service-link">Learn More →</div>
+        </div>
+      </a>
+      <a href="#" class="service-card">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Nutrition">
+          <span class="service-tag">Nutrition</span>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🌿</div>
+          <div class="service-name">Nutrition Solutions</div>
+          <div class="service-desc">Contract development and manufacturing of nutraceuticals, dietary supplements, and functional food ingredients with full traceability and quality documentation.</div>
+          <div class="service-link">Learn More →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section" id="capabilities">
+  <div class="section-inner">
+    <div class="capabilities-grid">
+      <div class="capabilities-img">
+        <img src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Lab capabilities">
+        <div class="cap-floating">
+          <div class="cap-stat"><div class="cap-stat-num">ISO 9001</div><div class="cap-stat-label">Quality Certified</div></div>
+          <div class="cap-stat"><div class="cap-stat-num">ICH Q10</div><div class="cap-stat-label">Compliant PQS</div></div>
+          <div class="cap-stat"><div class="cap-stat-num">US FDA</div><div class="cap-stat-label">Inspected Facilities</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Core Capabilities</div>
+        <h2 class="section-title">Integrated Solutions Across the Full Pharmaceutical Value Chain</h2>
+        <p class="section-sub">From the first molecule to the last mile — we provide seamless, fully integrated services designed to reduce handoffs and accelerate your timeline to market.</p>
+        <ul class="cap-list">
+          <li>
+            <div class="cap-check">✓</div>
+            <div><div class="cap-item-title">GMP-Certified Manufacturing</div><div class="cap-item-sub">FDA, EMA, and WHO inspected sites with full CGMP compliance across all production units.</div></div>
+          </li>
+          <li>
+            <div class="cap-check">✓</div>
+            <div><div class="cap-item-title">Regulatory Affairs & CMC Support</div><div class="cap-item-sub">Expert guidance on IND/NDA/ANDA filings, DMF preparation, and global dossier compilation.</div></div>
+          </li>
+          <li>
+            <div class="cap-check">✓</div>
+            <div><div class="cap-item-title">Analytical Development & QC</div><div class="cap-item-sub">Complete method development, validation, stability studies, and release testing services.</div></div>
+          </li>
+          <li>
+            <div class="cap-check">✓</div>
+            <div><div class="cap-item-title">Supply Chain & Logistics</div><div class="cap-item-sub">Controlled substance handling, cold chain management, and global distribution network.</div></div>
+          </li>
+          <li>
+            <div class="cap-check">✓</div>
+            <div><div class="cap-item-title">Technology Transfer</div><div class="cap-item-sub">Seamless tech transfer with comprehensive documentation and on-site knowledge exchange programs.</div></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THERAPEUTIC AREAS -->
+<section class="section services-bg">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 0.5rem;">
+      <div class="section-label" style="display:inline-block">Therapeutic Focus</div>
+    </div>
+    <h2 class="section-title" style="text-align:center">Expertise Across Major<br>Therapeutic Areas</h2>
+    <div class="therapy-grid">
+      <div class="therapy-card"><span class="therapy-emoji">🫀</span><div class="therapy-name">Cardiovascular</div><div class="therapy-count">42 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">🧠</span><div class="therapy-name">CNS & Neurology</div><div class="therapy-count">38 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">🦠</span><div class="therapy-name">Anti-Infectives</div><div class="therapy-count">55 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">🎗️</span><div class="therapy-name">Oncology</div><div class="therapy-count">67 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">🩺</span><div class="therapy-name">Endocrinology</div><div class="therapy-count">29 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">🫁</span><div class="therapy-name">Respiratory</div><div class="therapy-count">31 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">🦴</span><div class="therapy-name">Musculoskeletal</div><div class="therapy-count">22 active projects</div><div class="therapy-arrow">→</div></div>
+      <div class="therapy-card"><span class="therapy-emoji">👁️</span><div class="therapy-name">Ophthalmology</div><div class="therapy-count">18 active projects</div><div class="therapy-arrow">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCORDION -->
+<section class="section accordion-bg" id="faq">
+  <div class="section-inner">
+    <div class="section-label">Everything You Need to Know</div>
+    <h2 class="section-title">Our Services, Explained</h2>
+    <p class="section-sub">From molecule to market — here's a detailed look at how we partner with pharmaceutical innovators at every stage.</p>
+    <div class="accordion-layout">
+      <div class="accordion-img-wrap">
+        <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Pharmaceutical lab" id="acc-img">
+      </div>
+      <div class="accordion-list">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">01</span>
+            <span class="acc-title">What is Drug Discovery and how do we approach it?</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Drug discovery is the process of identifying and validating new molecular entities that could become medicines. At PRIVED Life, we combine AI-driven target identification, high-throughput screening of our 2M+ compound library, and state-of-the-art structural biology to rapidly progress from target to lead candidate. Our medicinal chemistry teams specialize in optimizing drug-like properties including ADMET profiles, selectivity, and metabolic stability.
+              <div class="accordion-tags">
+                <span class="acc-tag">Target ID</span>
+                <span class="acc-tag">HTS Screening</span>
+                <span class="acc-tag">Lead Optimization</span>
+                <span class="acc-tag">ADMET Profiling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">02</span>
+            <span class="acc-title">API & Drug Substance Manufacturing Services</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Our API manufacturing capabilities span from gram-scale for early clinical supply to multi-metric-ton commercial production. We operate 8 dedicated synthesis suites with advanced flow chemistry, biocatalysis, and photochemistry capabilities. All API manufacturing is conducted under cGMP guidelines with full ICH Q7 compliance. We support controlled substances (DEA Schedule I–V) with dedicated secure facilities.
+              <div class="accordion-tags">
+                <span class="acc-tag">GMP API</span>
+                <span class="acc-tag">cGMP Synthesis</span>
+                <span class="acc-tag">Controlled Substances</span>
+                <span class="acc-tag">Scale-up</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">03</span>
+            <span class="acc-title">Drug Product Formulation & Development</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              From preformulation to commercial-scale manufacturing, our drug product team handles oral solids, semi-solids, sterile injectables, and complex dosage forms. We specialize in challenging formulations including poorly soluble compounds (using hot-melt extrusion, spray drying), modified-release systems, and highly potent formulations. Our packaging line supports blister, bottle, and unit-dose configurations.
+              <div class="accordion-tags">
+                <span class="acc-tag">Oral Solids</span>
+                <span class="acc-tag">Injectables</span>
+                <span class="acc-tag">Modified Release</span>
+                <span class="acc-tag">HPAPI Handling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">04</span>
+            <span class="acc-title">Antibody Drug Conjugate (ADC) Services</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              ADCs represent one of the most exciting frontiers in oncology. PRIVED Life offers end-to-end ADC development — from linker-payload synthesis and DAR (drug-to-antibody ratio) optimization to full GMP clinical manufacturing. Our dedicated ADC suites feature containment systems for cytotoxic payloads and comprehensive analytical capabilities including HIC, SEC, and mass spectrometry characterization.
+              <div class="accordion-tags">
+                <span class="acc-tag">Linker Synthesis</span>
+                <span class="acc-tag">Bioconjugation</span>
+                <span class="acc-tag">Cytotoxic Payload</span>
+                <span class="acc-tag">Analytical Char.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">05</span>
+            <span class="acc-title">Regulatory Affairs & CMC Strategy</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Navigating global regulatory requirements demands specialized expertise. Our regulatory affairs team has successfully completed 150+ filings with FDA, EMA, PMDA, and Health Canada. We provide comprehensive CMC support including Drug Master File (DMF/ASMF) preparation, IND/CTA/NDA authoring, and post-approval change management. We maintain a 95% first-cycle approval rate.
+              <div class="accordion-tags">
+                <span class="acc-tag">FDA Filings</span>
+                <span class="acc-tag">EMA Submissions</span>
+                <span class="acc-tag">DMF/ASMF</span>
+                <span class="acc-tag">CMC Strategy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">06</span>
+            <span class="acc-title">Quality Systems & Analytical Services</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Our quality management system is built on ICH Q10 principles with a culture of continuous improvement. We offer stand-alone analytical services including method development and validation (ICH Q2), forced degradation studies, genotoxic impurity analysis (ICH M7), and long-term stability programs under ICH Q1 conditions. Our labs are fully equipped with HPLC, GC, LC-MS/MS, NMR, and ICP-MS instruments.
+              <div class="accordion-tags">
+                <span class="acc-tag">ICH Q10 QMS</span>
+                <span class="acc-tag">Method Validation</span>
+                <span class="acc-tag">Stability Studies</span>
+                <span class="acc-tag">Impurity Profiling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <span class="acc-num">07</span>
+            <span class="acc-title">Why Partner with PRIVED Life as your CDMO?</span>
+            <div class="acc-icon"><svg viewBox="0 0 14 14"><path d="M7 2v10M2 7h10"/></svg></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Choosing the right CDMO partner is a critical decision. PRIVED Life International differentiates itself through truly integrated capabilities (no handoffs to third parties), speed to IND in as little as 12 months for novel molecules, transparent project management with dedicated program managers, and competitive pricing backed by our India-based manufacturing infrastructure. Our client retention rate stands at 94% over the last decade.
+              <div class="accordion-tags">
+                <span class="acc-tag">Integrated CDMO</span>
+                <span class="acc-tag">Speed to IND</span>
+                <span class="acc-tag">Cost-Effective</span>
+                <span class="acc-tag">94% Retention</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-bg">
+  <div class="section-inner">
+    <div style="text-align:center; max-width: 37.5rem; margin: 0 auto 0;">
+      <div class="section-label" style="display:inline-block">How We Work</div>
+      <h2 class="section-title">Our Streamlined Partnership Process</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-circle">📞</div>
+        <div class="step-num">Step 01</div>
+        <div class="step-title">Initial Consultation</div>
+        <div class="step-desc">Brief discovery call to understand your project goals, timeline, and technical requirements.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">📋</div>
+        <div class="step-num">Step 02</div>
+        <div class="step-title">Feasibility & Proposal</div>
+        <div class="step-desc">Technical feasibility assessment and detailed project proposal with milestones and budget.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">✍️</div>
+        <div class="step-num">Step 03</div>
+        <div class="step-title">Agreement & Kickoff</div>
+        <div class="step-desc">MSA, CDA, and project charter execution followed by dedicated team assignment.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">🔬</div>
+        <div class="step-num">Step 04</div>
+        <div class="step-title">Execution & Reporting</div>
+        <div class="step-desc">Transparent real-time project updates via dedicated portal with regulatory documentation.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">🚀</div>
+        <div class="step-num">Step 05</div>
+        <div class="step-title">Delivery & Beyond</div>
+        <div class="step-desc">On-time delivery with post-project support, scale-up planning, and continued partnership.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="contact">
+  <div class="cta-inner">
+    <div class="hero-badge" style="margin: 0 auto 1.5rem; display:inline-flex;">Let's Build Together</div>
+    <h2>Ready to Advance Your Pharmaceutical Program?</h2>
+    <p>Connect with our team of experts to explore how PRIVED Life International can accelerate your journey from discovery to market with precision, speed, and full regulatory confidence.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-teal">Request a Proposal</a>
+      <a href="#" class="btn-ghost">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="img/header.png" alt="PRIVED Life">
+        </a>
+        <p>PRIVED Life International Pvt Ltd is a global CDMO delivering integrated drug discovery, development and manufacturing services across 40+ countries.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#">Drug Discovery</a></li>
+          <li><a href="#">API Manufacturing</a></li>
+          <li><a href="#">Drug Product</a></li>
+          <li><a href="#">ADC Services</a></li>
+          <li><a href="#">Regulatory Affairs</a></li>
+          <li><a href="#">Analytical Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">Facilities</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Investor Relations</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">White Papers</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Publications</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">+1 (800) 000-0000</a></li>
+          <li><a href="#">info@privedlife.com</a></li>
+          <li><a href="#">Mumbai, India HQ</a></li>
+          <li><a href="#">New Jersey, USA</a></li>
+          <li><a href="#">Basel, Switzerland</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 PRIVED Life International Pvt Ltd. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleAccordion(btn) {
+  const item = btn.closest('.accordion-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.accordion-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const accImages = [
+  'https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=700',
+  'https://images.pexels.com/photos/954585/pexels-photo-954585.jpeg?auto=compress&cs=tinysrgb&w=700',
+  'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=700',
+  'https://images.pexels.com/photos/2280568/pexels-photo-2280568.jpeg?auto=compress&cs=tinysrgb&w=700',
+  'https://images.pexels.com/photos/5726706/pexels-photo-5726706.jpeg?auto=compress&cs=tinysrgb&w=700',
+  'https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=700',
+  'https://images.pexels.com/photos/3786157/pexels-photo-3786157.jpeg?auto=compress&cs=tinysrgb&w=700',
+];
+document.querySelectorAll('.accordion-trigger').forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    const img = document.getElementById('acc-img');
+    if (img && accImages[i]) { img.style.opacity = 0; setTimeout(() => { img.src = accImages[i]; img.style.opacity = 1; }, 150); img.style.transition = 'opacity .2s'; }
+  });
+});
+
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (hero) hero.style.backgroundPositionY = (y * 0.3) + 'px';
+});
+
+</script>
+<script src="header.js"></script>
+</body>
+</html>
