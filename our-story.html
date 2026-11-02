@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover the story, purpose, and integrated pharmaceutical capabilities behind PRIVED Life International.">
+<title>Our Story | PRIVED Life International</title>
+<link rel="icon" type="image/webp" href="img/favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --teal: #00c4a7;
+    --teal-dark: #008f7c;
+    --teal-pale: #e5f8f4;
+    --paper: #f7f9fc;
+    --ink: #1a2332;
+    --muted: #64748b;
+    --line: rgba(10, 22, 40, .12);
+    --container: 76rem;
+    --gutter: clamp(1.25rem, 5vw, 4rem);
+    --font: "Poppins", sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { color: var(--ink); background: #fff; font-family: var(--font); line-height: 1.65; overflow-x: hidden; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .container { width: min(var(--container), calc(100% - var(--gutter) * 2)); margin-inline: auto; }
+  .story-hero { position: relative; isolation: isolate; overflow: hidden; padding: clamp(4.5rem, 9vw, 8rem) 0 clamp(5rem, 10vw, 8rem); background: var(--navy); color: #fff; }
+  .story-hero::before, .story-hero::after { position: absolute; z-index: -1; content: ""; border-radius: 50%; pointer-events: none; }
+  .story-hero::before { width: 44rem; height: 44rem; right: -9rem; top: -20rem; border: 1px solid rgba(0,196,167,.23); box-shadow: 0 0 0 4rem rgba(0,196,167,.025), 0 0 0 9rem rgba(0,196,167,.02); }
+  .story-hero::after { width: 28rem; height: 28rem; left: -18rem; bottom: -19rem; background: radial-gradient(circle, rgba(0,196,167,.18), transparent 70%); }
+  .breadcrumbs { display: flex; gap: .6rem; align-items: center; color: rgba(255,255,255,.55); font-size: .78rem; margin-bottom: clamp(2.5rem, 6vw, 5rem); }
+  .breadcrumbs a { text-decoration: none; }
+  .breadcrumbs a:hover { color: var(--teal); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .82fr); align-items: center; gap: clamp(3rem, 8vw, 8rem); }
+  .eyebrow { display: flex; align-items: center; gap: .75rem; color: var(--teal); font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .eyebrow::before { width: 2rem; height: 1px; content: ""; background: currentColor; }
+  h1 { max-width: 47rem; margin: 1.2rem 0 1.4rem; font-size: clamp(3rem, 7.5vw, 6.5rem); font-weight: 500; letter-spacing: -.075em; line-height: .99; }
+  h1 em { color: var(--teal); font-style: normal; }
+  .hero-copy { max-width: 37rem; color: rgba(255,255,255,.7); font-size: clamp(1rem, 1.5vw, 1.15rem); }
+  .hero-note { display: flex; align-items: center; gap: .9rem; margin-top: 2.5rem; color: rgba(255,255,255,.7); font-size: .82rem; }
+  .hero-note strong { color: #fff; font-size: 1.05rem; font-weight: 600; }
+  .hero-note-mark { display: grid; width: 2.6rem; aspect-ratio: 1; place-items: center; border: 1px solid rgba(0,196,167,.5); border-radius: 50%; color: var(--teal); font-size: 1.1rem; }
+  .hero-image { position: relative; padding: 0 0 2.25rem 2.25rem; }
+  .hero-image::before { position: absolute; z-index: -1; content: ""; inset: 2rem 2rem 0 0; border: 1px solid rgba(0,196,167,.55); border-radius: 1.25rem; }
+  .hero-image img { width: 100%; height: clamp(20rem, 37vw, 31rem); object-fit: cover; border-radius: 1.1rem; filter: saturate(.8); }
+  .image-caption { position: absolute; right: 0; bottom: 0; max-width: 13rem; padding: 1rem 1.1rem; background: var(--teal); color: var(--navy); font-size: .78rem; font-weight: 600; line-height: 1.45; }
+
+  .intro { padding: clamp(5rem, 10vw, 9rem) 0; }
+  .intro-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 9vw, 9rem); align-items: start; }
+  .section-kicker { color: var(--teal-dark); font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .intro-aside { position: sticky; top: 8rem; }
+  .intro-aside h2 { margin-top: 1rem; font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 500; letter-spacing: -.06em; line-height: 1.08; }
+  .intro-content { padding-top: .25rem; }
+  .intro-content p { color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); }
+  .intro-content p + p { margin-top: 1.25rem; }
+  .pullquote { position: relative; margin-top: 2.5rem; padding: 1.5rem 1.5rem 1.5rem 2rem; border-left: .2rem solid var(--teal); background: var(--paper); color: var(--navy); font-size: clamp(1.15rem, 2vw, 1.55rem); font-weight: 500; letter-spacing: -.025em; line-height: 1.45; }
+
+  .journey { padding: clamp(5rem, 9vw, 8rem) 0; background: var(--paper); }
+  .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 4rem; }
+  .section-heading h2 { max-width: 42rem; margin-top: .8rem; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 500; letter-spacing: -.07em; line-height: 1.05; }
+  .section-heading p { max-width: 20rem; color: var(--muted); font-size: .9rem; }
+  .timeline { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .timeline::before { position: absolute; top: .7rem; left: 0; right: 0; height: 1px; content: ""; background: linear-gradient(90deg, var(--teal), rgba(10,22,40,.12)); }
+  .timeline-item { position: relative; padding-top: 2.6rem; }
+  .timeline-dot { position: absolute; z-index: 1; top: 0; left: 0; width: 1.4rem; aspect-ratio: 1; border: .35rem solid var(--paper); border-radius: 50%; background: var(--teal-dark); box-shadow: 0 0 0 1px var(--teal-dark); }
+  .timeline-label { color: var(--teal-dark); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .timeline-item h3 { margin: .7rem 0; color: var(--navy); font-size: 1.25rem; font-weight: 600; }
+  .timeline-item p { max-width: 22rem; color: var(--muted); font-size: .9rem; }
+
+  .principles { padding: clamp(5rem, 10vw, 9rem) 0; }
+  .principles-top { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3rem; }
+  .principles-top h2 { max-width: 40rem; margin-top: .8rem; font-size: clamp(2.5rem, 5vw, 4.6rem); font-weight: 500; letter-spacing: -.07em; line-height: 1.05; }
+  .principles-top p { max-width: 29rem; margin-left: auto; color: var(--muted); }
+  .principle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .principle { min-height: 17rem; padding: 2rem clamp(1rem, 3vw, 2.5rem) 2rem 0; }
+  .principle + .principle { padding-left: clamp(1rem, 3vw, 2.5rem); border-left: 1px solid var(--line); }
+  .principle-index { color: var(--teal-dark); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
+  .principle h3 { margin: 2rem 0 .75rem; color: var(--navy); font-size: 1.3rem; font-weight: 600; }
+  .principle p { color: var(--muted); font-size: .9rem; }
+  .principle-rule { width: 2rem; height: .2rem; margin-top: 1.5rem; background: var(--teal); transition: width .25s ease; }
+  .principle:hover .principle-rule { width: 4rem; }
+
+  .closing { position: relative; overflow: hidden; padding: clamp(4rem, 8vw, 7rem) 0; background: var(--navy); color: #fff; }
+  .closing::after { position: absolute; top: -12rem; right: -7rem; width: 30rem; aspect-ratio: 1; border: 1px solid rgba(0,196,167,.25); border-radius: 50%; box-shadow: 0 0 0 3rem rgba(0,196,167,.025), 0 0 0 7rem rgba(0,196,167,.02); content: ""; pointer-events: none; }
+  .closing-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: end; gap: 3rem; }
+  .closing h2 { max-width: 45rem; margin-top: .9rem; font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 500; letter-spacing: -.07em; line-height: 1.05; }
+  .closing p { max-width: 26rem; margin-top: 1.2rem; color: rgba(255,255,255,.65); }
+  .closing-link { display: inline-flex; align-items: center; gap: 1rem; flex: 0 0 auto; padding: 1rem 1.3rem; background: var(--teal); color: var(--navy); font-size: .9rem; font-weight: 700; text-decoration: none; transition: gap .2s ease, background .2s ease; }
+  .closing-link:hover { gap: 1.4rem; background: #39dec4; }
+  .site-footer { padding: 1.5rem 0; background: #07101e; color: rgba(255,255,255,.55); font-size: .78rem; }
+  .footer-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-inner a { color: inherit; text-decoration: none; }
+  .footer-inner a:hover { color: var(--teal); }
+
+  @media (max-width: 52rem) {
+    .hero-grid, .intro-grid { grid-template-columns: 1fr; }
+    .hero-grid { gap: 3rem; }
+    .hero-image { max-width: 35rem; }
+    .intro-aside { position: static; }
+    .section-heading { align-items: start; flex-direction: column; margin-bottom: 3rem; }
+    .timeline { grid-template-columns: 1fr; gap: 1.5rem; padding-left: 1.4rem; }
+    .timeline::before { top: 0; bottom: 0; left: .65rem; right: auto; width: 1px; height: auto; background: linear-gradient(var(--teal), rgba(10,22,40,.12)); }
+    .timeline-item { padding: 0 0 1rem 1.2rem; }
+    .timeline-dot { top: .25rem; left: -1.4rem; }
+    .principles-top { grid-template-columns: 1fr; gap: 1.25rem; }
+    .principles-top p { margin-left: 0; }
+    .principle-grid { grid-template-columns: 1fr; }
+    .principle, .principle + .principle { min-height: 0; padding: 1.5rem 0; border-left: 0; }
+    .principle + .principle { border-top: 1px solid var(--line); }
+    .principle h3 { margin-top: 1rem; }
+    .closing-inner { align-items: start; flex-direction: column; }
+  }
+  @media (max-width: 32rem) {
+    .hero-image { padding-left: 1rem; padding-bottom: 1.5rem; }
+    .hero-image::before { inset: 1rem 1rem 0 0; }
+    .image-caption { max-width: 11rem; padding: .75rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+</style>
+<link rel="stylesheet" href="header.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>🌐 Serving 40+ countries — PRIVED Life International Pvt Ltd — CDMO Partner</span>
+      <div>
+        <a href="tel:+18000000000">+1 (800) 000-0000</a>
+        <a href="mailto:info@privedlife.com">info@privedlife.com</a>
+        <a href="index.html#contact">Investor Relations</a>
+      </div>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="PRIVED Life home"><img src="img/header.png" alt="PRIVED Life"></a>
+      <nav id="primary-navigation" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" aria-expanded="false" aria-controls="about-menu">About Us</button>
+            <div class="dropdown wide" id="about-menu">
+              <a href="our-story.html" class="drop-item" aria-current="page"><div><div class="drop-title">Our Story</div><div class="drop-sub">History and vision since 1998</div></div></a>
+              <a href="mission-values.html" class="drop-item"><div><div class="drop-title">Mission &amp; Values</div><div class="drop-sub">What drives everything we do</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Leadership Team</div><div class="drop-sub">Meet our executive directors</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Global Presence</div><div class="drop-sub">Operations in 14 countries</div></div></a>
+              <a href="awards-recognition.html" class="drop-item"><div><div class="drop-title">Awards &amp; Recognition</div><div class="drop-sub">Industry certifications &amp; honors</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Press &amp; Media</div><div class="drop-sub">News releases and media kit</div></div></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" aria-expanded="false" aria-controls="facilities-menu">Facilities</button>
+            <div class="dropdown wide" id="facilities-menu">
+              <a href="#" class="drop-item"><div><div class="drop-title">R&amp;D Laboratories</div><div class="drop-sub">State-of-the-art research labs</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Manufacturing Plants</div><div class="drop-sub">GMP-certified production units</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">QC &amp; Testing Centers</div><div class="drop-sub">Analytical &amp; release testing</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Cold Chain Warehousing</div><div class="drop-sub">Temperature-controlled logistics</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Green Facilities</div><div class="drop-sub">Sustainable manufacturing</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Site Locations</div><div class="drop-sub">India, USA, Europe, Asia</div></div></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" aria-expanded="false" aria-controls="services-menu">Services</button>
+            <div class="dropdown triple" id="services-menu">
+              <div class="drop-heading">Drug Discovery</div>
+              <a href="#" class="drop-item"><div><div class="drop-title">Target Identification</div><div class="drop-sub">Biological target screening</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Hit-to-Lead</div><div class="drop-sub">Compound library screening</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Lead Optimization</div><div class="drop-sub">ADMET &amp; PK/PD profiling</div></div></a>
+              <div class="drop-divider"></div>
+              <div class="drop-heading">Drug Development</div>
+              <a href="#" class="drop-item"><div><div class="drop-title">Formulation Dev</div><div class="drop-sub">Solid, liquid &amp; semi-solid forms</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Regulatory Affairs</div><div class="drop-sub">IND, NDA, ANDA filings</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Clinical Trials</div><div class="drop-sub">Phase I–III management</div></div></a>
+              <div class="drop-divider"></div>
+              <div class="drop-heading">Manufacturing</div>
+              <a href="#" class="drop-item"><div><div class="drop-title">API Manufacturing</div><div class="drop-sub">GMP bulk active synthesis</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Drug Product Mfg</div><div class="drop-sub">Dosage form production</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">ADC Services</div><div class="drop-sub">Antibody drug conjugates</div></div></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" aria-expanded="false" aria-controls="resources-menu">Resources</button>
+            <div class="dropdown wide" id="resources-menu">
+              <a href="#" class="drop-item"><div><div class="drop-title">White Papers</div><div class="drop-sub">Technical &amp; regulatory guides</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Case Studies</div><div class="drop-sub">Real-world project outcomes</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Webinars</div><div class="drop-sub">On-demand expert sessions</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Publications</div><div class="drop-sub">Peer-reviewed research</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Regulatory Library</div><div class="drop-sub">FDA, EMA, WHO guidance</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Events &amp; Conferences</div><div class="drop-sub">Upcoming industry events</div></div></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" aria-expanded="false" aria-controls="careers-menu">Careers</button>
+            <div class="dropdown" id="careers-menu">
+              <a href="#" class="drop-item"><div><div class="drop-title">Open Positions</div><div class="drop-sub">Browse current opportunities</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Graduate Programs</div><div class="drop-sub">Internships &amp; fellowships</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Life at PRIVED</div><div class="drop-sub">Culture, benefits &amp; perks</div></div></a>
+              <a href="#" class="drop-item"><div><div class="drop-title">Talent Network</div><div class="drop-sub">Stay informed of new roles</div></div></a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="story-hero">
+      <div class="container">
+        <!-- <div class="breadcrumbs"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Our Story</span></div> -->
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Our story</div>
+            <h1>Science moves<br>forward when<br><em>we move together.</em></h1>
+            <p class="hero-copy">Since 1998, PRIVED Life has grown around a simple idea: bring the people, expertise, and capabilities behind a medicine closer together.</p>
+            <div class="hero-note"><span class="hero-note-mark" aria-hidden="true">↗</span><span><strong>One connected journey</strong><br>From discovery and development to manufacturing</span></div>
+          </div>
+          <figure class="hero-image">
+            <img src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Scientist working carefully in a pharmaceutical research laboratory">
+            <figcaption class="image-caption">Built around better collaboration in science.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <div class="intro-aside">
+          <div class="section-kicker">A purpose that connects</div>
+          <h2 id="intro-title">Good science is a team effort.</h2>
+        </div>
+        <div class="intro-content">
+          <p>Every promising therapy passes through many hands and many disciplines. Our story is about helping those parts work as one—connecting scientific insight with practical development and dependable manufacturing.</p>
+          <p>PRIVED Life International brings together expertise across the pharmaceutical value chain, helping innovators move their programs forward with a partner invested in the details, the quality, and the shared goal of reaching patients.</p>
+          <blockquote class="pullquote">“The best partnerships make complex work feel connected, clear, and possible.”</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey" aria-labelledby="journey-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="section-kicker">The journey</div><h2 id="journey-title">A story still<br>being written.</h2></div>
+          <p>From our beginnings in 1998 to the work we do today, our focus has stayed on supporting the next step in pharmaceutical progress.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-label">The beginning · 1998</div><h3>Rooted in possibility</h3><p>PRIVED Life began with a commitment to scientific progress and the belief that thoughtful collaboration can help promising ideas go further.</p></article>
+          <article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-label">The evolution</div><h3>Connecting capabilities</h3><p>Over time, our work has grown across discovery, development, manufacturing, and the specialist support that helps connect each stage.</p></article>
+          <article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-label">Today · and ahead</div><h3>Moving forward together</h3><p>Today, we partner with pharmaceutical innovators to navigate complex programs with integrated expertise and a shared sense of purpose.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles" aria-labelledby="principles-title">
+      <div class="container">
+        <div class="principles-top">
+          <div><div class="section-kicker">What guides us</div><h2 id="principles-title">The way we work is part of our story.</h2></div>
+          <p>Our purpose is reflected in the everyday choices we make: how we listen, how we solve problems, and how we take responsibility for the work entrusted to us.</p>
+        </div>
+        <div class="principle-grid">
+          <article class="principle"><div class="principle-index">01 / SCIENCE</div><h3>Stay curious</h3><p>Ask better questions, value evidence, and keep learning as science and needs evolve.</p><div class="principle-rule" aria-hidden="true"></div></article>
+          <article class="principle"><div class="principle-index">02 / PARTNERSHIP</div><h3>Work as one team</h3><p>Bring people and disciplines together with open communication and shared accountability.</p><div class="principle-rule" aria-hidden="true"></div></article>
+          <article class="principle"><div class="principle-index">03 / QUALITY</div><h3>Care about every detail</h3><p>Approach each stage with rigor, consistency, and respect for the importance of the work.</p><div class="principle-rule" aria-hidden="true"></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="container closing-inner">
+        <div><div class="eyebrow">The next chapter</div><h2 id="closing-title">Let’s move important work forward.</h2><p>Tell us where you are in your journey. We’ll bring the right people together to explore what comes next.</p></div>
+        <a class="closing-link" href="index.html#contact">Start a conversation <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><span>© 2026 PRIVED Life International Pvt Ltd.</span><a href="index.html">Back to home ↑</a></div>
+  </footer>
+
+<script src="header.js"></script>
+</body>
+</html>
