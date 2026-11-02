@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Learn how PRIVED Life approaches quality, compliance, scientific contribution, and recognition.">
+<title>Awards &amp; Recognition | PRIVED Life International</title>
+<link rel="icon" type="image/webp" href="img/favicon.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --navy:#0a1628; --teal:#00c4a7; --teal-dark:#008f7c; --teal-pale:#e5f8f4; --paper:#f7f9fc; --ink:#1a2332; --muted:#64748b; --line:rgba(10,22,40,.12); --container:76rem; --gutter:clamp(1.25rem,5vw,4rem); --font:"Poppins",sans-serif; }
+  html { scroll-behavior:smooth; }
+  body { color:var(--ink); background:#fff; font-family:var(--font); line-height:1.65; overflow-x:hidden; }
+  a { color:inherit; }
+  img { display:block; max-width:100%; }
+  .container { width:min(var(--container),calc(100% - var(--gutter) * 2)); margin-inline:auto; }
+  .page-hero { position:relative; isolation:isolate; overflow:hidden; padding:clamp(4.5rem,9vw,8rem) 0 clamp(5rem,10vw,8rem); background:var(--navy); color:#fff; }
+  .page-hero::before,.page-hero::after { position:absolute; z-index:-1; content:""; border-radius:50%; pointer-events:none; }
+  .page-hero::before { width:44rem; height:44rem; right:-9rem; top:-20rem; border:1px solid rgba(0,196,167,.23); box-shadow:0 0 0 4rem rgba(0,196,167,.025),0 0 0 9rem rgba(0,196,167,.02); }
+  .page-hero::after { width:28rem; height:28rem; left:-18rem; bottom:-19rem; background:radial-gradient(circle,rgba(0,196,167,.18),transparent 70%); }
+  .breadcrumbs { display:flex; gap:.6rem; align-items:center; color:rgba(255,255,255,.55); font-size:.78rem; margin-bottom:clamp(2.5rem,6vw,5rem); }
+  .breadcrumbs a { text-decoration:none; }
+  .breadcrumbs a:hover { color:var(--teal); }
+  .hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(18rem,.82fr); align-items:center; gap:clamp(3rem,8vw,8rem); }
+  .eyebrow { display:flex; align-items:center; gap:.75rem; color:var(--teal); font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+  .eyebrow::before { width:2rem; height:1px; content:""; background:currentColor; }
+  h1 { max-width:47rem; margin:1.2rem 0 1.4rem; font-size:clamp(3rem,7.5vw,6.5rem); font-weight:500; letter-spacing:-.075em; line-height:.99; }
+  h1 em { color:var(--teal); font-style:normal; }
+  .hero-copy { max-width:37rem; color:rgba(255,255,255,.7); font-size:clamp(1rem,1.5vw,1.15rem); }
+  .hero-note { display:flex; align-items:center; gap:.9rem; margin-top:2.5rem; color:rgba(255,255,255,.7); font-size:.82rem; }
+  .hero-note strong { color:#fff; font-size:1.05rem; font-weight:600; }
+  .hero-note-mark { display:grid; width:2.6rem; aspect-ratio:1; place-items:center; border:1px solid rgba(0,196,167,.5); border-radius:50%; color:var(--teal); font-size:1.1rem; }
+  .hero-image { position:relative; padding:0 0 2.25rem 2.25rem; }
+  .hero-image::before { position:absolute; z-index:-1; content:""; inset:2rem 2rem 0 0; border:1px solid rgba(0,196,167,.55); border-radius:1.25rem; }
+  .hero-image img { width:100%; height:clamp(20rem,37vw,31rem); object-fit:cover; border-radius:1.1rem; filter:saturate(.8); }
+  .image-caption { position:absolute; right:0; bottom:0; max-width:13rem; padding:1rem 1.1rem; background:var(--teal); color:var(--navy); font-size:.78rem; font-weight:600; line-height:1.45; }
+
+  .intro { padding:clamp(5rem,10vw,9rem) 0; }
+  .intro-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(3rem,9vw,9rem); align-items:start; }
+  .section-kicker { color:var(--teal-dark); font-size:.75rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .intro-aside { position:sticky; top:8rem; }
+  .intro-aside h2 { margin-top:1rem; font-size:clamp(2.2rem,4vw,3.8rem); font-weight:500; letter-spacing:-.06em; line-height:1.08; }
+  .intro-copy { color:var(--muted); font-size:clamp(1rem,1.5vw,1.15rem); }
+  .intro-copy p + p { margin-top:1.25rem; }
+  .pullquote { margin-top:2.5rem; padding:1.5rem 1.5rem 1.5rem 2rem; border-left:.2rem solid var(--teal); background:var(--paper); color:var(--navy); font-size:clamp(1.15rem,2vw,1.55rem); font-weight:500; letter-spacing:-.025em; line-height:1.45; }
+
+  .recognition { padding:clamp(5rem,9vw,8rem) 0; background:var(--paper); }
+  .section-heading { display:flex; justify-content:space-between; align-items:end; gap:2rem; margin-bottom:3.5rem; }
+  .section-heading h2 { max-width:42rem; margin-top:.8rem; font-size:clamp(2.4rem,5vw,4.5rem); font-weight:500; letter-spacing:-.07em; line-height:1.05; }
+  .section-heading p { max-width:23rem; color:var(--muted); font-size:.9rem; }
+  .recognition-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+  .recognition-card { position:relative; min-height:22rem; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; padding:clamp(1.5rem,3vw,2.4rem); border:1px solid var(--line); background:#fff; transition:transform .25s ease, box-shadow .25s ease; }
+  .recognition-card:hover { transform:translateY(-.35rem); box-shadow:0 1.25rem 3rem rgba(10,22,40,.1); }
+  .recognition-card:nth-child(2) { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .card-top { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+  .card-index { color:var(--teal-dark); font-size:.75rem; font-weight:700; letter-spacing:.1em; }
+  .recognition-card:nth-child(2) .card-index { color:var(--teal); }
+  .card-mark { display:grid; width:3.25rem; aspect-ratio:1; place-items:center; border:1px solid rgba(0,143,124,.35); border-radius:50%; color:var(--teal-dark); font-size:1.1rem; }
+  .recognition-card:nth-child(2) .card-mark { border-color:rgba(0,196,167,.5); color:var(--teal); }
+  .card-content h3 { margin-bottom:.75rem; font-size:1.35rem; font-weight:600; letter-spacing:-.03em; }
+  .card-content p { max-width:24rem; color:var(--muted); font-size:.88rem; }
+  .recognition-card:nth-child(2) .card-content p { color:rgba(255,255,255,.68); }
+  .card-foot { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--teal-dark); font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .recognition-card:nth-child(2) .card-foot { border-color:rgba(255,255,255,.18); color:var(--teal); }
+
+  .standards { padding:clamp(5rem,10vw,9rem) 0; }
+  .standards-layout { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,8vw,7rem); align-items:center; }
+  .standards-heading h2 { max-width:39rem; margin-top:.8rem; font-size:clamp(2.5rem,5vw,4.6rem); font-weight:500; letter-spacing:-.07em; line-height:1.05; }
+  .standards-heading p { max-width:34rem; margin-top:1.2rem; color:var(--muted); }
+  .standard-list { border-top:1px solid var(--line); }
+  .standard-item { display:grid; grid-template-columns:2.5rem 1fr; gap:1rem; padding:1.35rem 0; border-bottom:1px solid var(--line); }
+  .standard-number { color:var(--teal-dark); font-size:.75rem; font-weight:700; }
+  .standard-item h3 { color:var(--navy); font-size:1rem; font-weight:600; }
+  .standard-item p { margin-top:.25rem; color:var(--muted); font-size:.83rem; }
+  .note { margin-top:2rem; padding:1rem 1.2rem; border:1px solid rgba(0,143,124,.2); background:var(--teal-pale); color:#375b59; font-size:.8rem; }
+
+  .closing { position:relative; overflow:hidden; padding:clamp(4rem,8vw,7rem) 0; background:var(--navy); color:#fff; }
+  .closing::after { position:absolute; top:-12rem; right:-7rem; width:30rem; aspect-ratio:1; border:1px solid rgba(0,196,167,.25); border-radius:50%; box-shadow:0 0 0 3rem rgba(0,196,167,.025),0 0 0 7rem rgba(0,196,167,.02); content:""; pointer-events:none; }
+  .closing-inner { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:end; gap:3rem; }
+  .closing h2 { max-width:45rem; margin-top:.9rem; font-size:clamp(2.5rem,5vw,4.8rem); font-weight:500; letter-spacing:-.07em; line-height:1.05; }
+  .closing p { max-width:26rem; margin-top:1.2rem; color:rgba(255,255,255,.65); }
+  .closing-link { display:inline-flex; align-items:center; gap:1rem; flex:0 0 auto; padding:1rem 1.3rem; background:var(--teal); color:var(--navy); font-size:.9rem; font-weight:700; text-decoration:none; transition:gap .2s ease,background .2s ease; }
+  .closing-link:hover { gap:1.4rem; background:#39dec4; }
+  .site-footer { padding:1.5rem 0; background:#07101e; color:rgba(255,255,255,.55); font-size:.78rem; }
+  .footer-inner { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+  .footer-inner a { color:inherit; text-decoration:none; }
+  .footer-inner a:hover { color:var(--teal); }
+
+  @media (max-width:52rem) {
+    .hero-grid,.intro-grid,.standards-layout { grid-template-columns:1fr; }
+    .hero-grid { gap:3rem; }
+    .hero-image { max-width:35rem; }
+    .intro-aside { position:static; }
+    .section-heading { align-items:start; flex-direction:column; margin-bottom:2.5rem; }
+    .recognition-grid { grid-template-columns:1fr 1fr; }
+    .recognition-card:last-child { grid-column:1 / -1; min-height:17rem; }
+    .closing-inner { align-items:start; flex-direction:column; }
+  }
+  @media (max-width:36rem) {
+    .hero-image { padding-left:1rem; padding-bottom:1.5rem; }
+    .hero-image::before { inset:1rem 1rem 0 0; }
+    .image-caption { max-width:11rem; padding:.75rem; }
+    .recognition-grid { grid-template-columns:1fr; }
+    .recognition-card,.recognition-card:last-child { grid-column:auto; min-height:17rem; }
+  }
+  @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; } }
+</style>
+<link rel="stylesheet" href="header.css">
+</head>
+<body>
+  <div class="topbar"><div class="topbar-inner">
+    <span>🌐 Serving 40+ countries — PRIVED Life International Pvt Ltd — CDMO Partner</span>
+    <div><a href="tel:+18000000000">+1 (800) 000-0000</a><a href="mailto:info@privedlife.com">info@privedlife.com</a><a href="index.html#contact">Investor Relations</a></div>
+  </div></div>
+  <header class="site-header"><div class="header-inner">
+    <a href="index.html" class="logo" aria-label="PRIVED Life home"><img src="img/header.png" alt="PRIVED Life"></a>
+    <nav id="primary-navigation" aria-label="Primary navigation"><ul class="nav-list">
+      <li class="nav-item"><button class="nav-link" aria-expanded="false" aria-controls="about-menu">About Us</button><div class="dropdown wide" id="about-menu">
+        <a href="our-story.html" class="drop-item"><div><div class="drop-title">Our Story</div><div class="drop-sub">History and vision since 1998</div></div></a>
+        <a href="mission-values.html" class="drop-item"><div><div class="drop-title">Mission &amp; Values</div><div class="drop-sub">What drives everything we do</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Leadership Team</div><div class="drop-sub">Meet our executive directors</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Global Presence</div><div class="drop-sub">Operations in 14 countries</div></div></a>
+        <a href="awards-recognition.html" class="drop-item" aria-current="page"><div><div class="drop-title">Awards &amp; Recognition</div><div class="drop-sub">Industry certifications &amp; honors</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Press &amp; Media</div><div class="drop-sub">News releases and media kit</div></div></a>
+      </div></li>
+      <li class="nav-item"><button class="nav-link" aria-expanded="false" aria-controls="facilities-menu">Facilities</button><div class="dropdown wide" id="facilities-menu">
+        <a href="#" class="drop-item"><div><div class="drop-title">R&amp;D Laboratories</div><div class="drop-sub">State-of-the-art research labs</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Manufacturing Plants</div><div class="drop-sub">GMP-certified production units</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">QC &amp; Testing Centers</div><div class="drop-sub">Analytical &amp; release testing</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Cold Chain Warehousing</div><div class="drop-sub">Temperature-controlled logistics</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Green Facilities</div><div class="drop-sub">Sustainable manufacturing</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Site Locations</div><div class="drop-sub">India, USA, Europe, Asia</div></div></a>
+      </div></li>
+      <li class="nav-item"><button class="nav-link" aria-expanded="false" aria-controls="services-menu">Services</button><div class="dropdown triple" id="services-menu">
+        <div class="drop-heading">Drug Discovery</div>
+        <a href="#" class="drop-item"><div><div class="drop-title">Target Identification</div><div class="drop-sub">Biological target screening</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Hit-to-Lead</div><div class="drop-sub">Compound library screening</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Lead Optimization</div><div class="drop-sub">ADMET &amp; PK/PD profiling</div></div></a>
+        <div class="drop-divider"></div><div class="drop-heading">Drug Development</div>
+        <a href="#" class="drop-item"><div><div class="drop-title">Formulation Dev</div><div class="drop-sub">Solid, liquid &amp; semi-solid forms</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Regulatory Affairs</div><div class="drop-sub">IND, NDA, ANDA filings</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Clinical Trials</div><div class="drop-sub">Phase I–III management</div></div></a>
+        <div class="drop-divider"></div><div class="drop-heading">Manufacturing</div>
+        <a href="#" class="drop-item"><div><div class="drop-title">API Manufacturing</div><div class="drop-sub">GMP bulk active synthesis</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Drug Product Mfg</div><div class="drop-sub">Dosage form production</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">ADC Services</div><div class="drop-sub">Antibody drug conjugates</div></div></a>
+      </div></li>
+      <li class="nav-item"><button class="nav-link" aria-expanded="false" aria-controls="resources-menu">Resources</button><div class="dropdown wide" id="resources-menu">
+        <a href="#" class="drop-item"><div><div class="drop-title">White Papers</div><div class="drop-sub">Technical &amp; regulatory guides</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Case Studies</div><div class="drop-sub">Real-world project outcomes</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Webinars</div><div class="drop-sub">On-demand expert sessions</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Publications</div><div class="drop-sub">Peer-reviewed research</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Regulatory Library</div><div class="drop-sub">FDA, EMA, WHO guidance</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Events &amp; Conferences</div><div class="drop-sub">Upcoming industry events</div></div></a>
+      </div></li>
+      <li class="nav-item"><button class="nav-link" aria-expanded="false" aria-controls="careers-menu">Careers</button><div class="dropdown" id="careers-menu">
+        <a href="#" class="drop-item"><div><div class="drop-title">Open Positions</div><div class="drop-sub">Browse current opportunities</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Graduate Programs</div><div class="drop-sub">Internships &amp; fellowships</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Life at PRIVED</div><div class="drop-sub">Culture, benefits &amp; perks</div></div></a>
+        <a href="#" class="drop-item"><div><div class="drop-title">Talent Network</div><div class="drop-sub">Stay informed of new roles</div></div></a>
+      </div></li>
+    </ul></nav>
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+  <main>
+    <section class="page-hero"><div class="container">
+      <!-- <div class="breadcrumbs"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Awards &amp; Recognition</span></div> -->
+      <div class="hero-grid">
+        <div><div class="eyebrow">Awards &amp; recognition</div><h1>Trust is earned.<br><em>Every day.</em></h1>
+          <p class="hero-copy">Recognition matters when it reflects the work behind it. At PRIVED Life, we focus on the standards, partnerships, and scientific rigor that earn confidence over time.</p>
+          <div class="hero-note"><span class="hero-note-mark" aria-hidden="true">↗</span><span><strong>Recognize the work</strong><br>Quality, responsibility, and continuous progress</span></div>
+        </div>
+        <figure class="hero-image"><img src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Scientist reviewing laboratory work and quality documentation"><figcaption class="image-caption">Credibility is built through consistent work.</figcaption></figure>
+      </div>
+    </div></section>
+
+    <section class="intro" aria-labelledby="intro-title"><div class="container intro-grid">
+      <div class="intro-aside"><div class="section-kicker">Recognition with meaning</div><h2 id="intro-title">The strongest recognition is built into the work.</h2></div>
+      <div class="intro-copy"><p>In pharmaceutical development, trust is built through reliable systems, clear communication, and careful execution. We value external recognition, but we believe its meaning comes from the everyday work that supports quality and collaboration.</p><p>Our focus is to keep strengthening our practices, support our partners responsibly, and contribute to a culture where progress is measured not only by milestones, but by how thoughtfully they are achieved.</p><blockquote class="pullquote">“Recognition is most meaningful when it reflects a standard we continue to uphold.”</blockquote></div>
+    </div></section>
+
+    <section class="recognition" aria-labelledby="recognition-title"><div class="container">
+      <div class="section-heading"><div><div class="section-kicker">Areas that matter</div><h2 id="recognition-title">What we want to be recognized for.</h2></div><p>Our approach centers on meaningful, verifiable work—not a list of claims. These are the commitments we aim to bring to every partnership.</p></div>
+      <div class="recognition-grid">
+        <article class="recognition-card"><div class="card-top"><span class="card-index">01 / QUALITY</span><span class="card-mark" aria-hidden="true">Q</span></div><div class="card-content"><h3>Consistent quality</h3><p>Build dependable practices into each stage, with care for the details and the responsibilities of pharmaceutical work.</p></div><div class="card-foot">A commitment in practice</div></article>
+        <article class="recognition-card"><div class="card-top"><span class="card-index">02 / PARTNERSHIP</span><span class="card-mark" aria-hidden="true">P</span></div><div class="card-content"><h3>Trusted collaboration</h3><p>Work openly with partners and teams, aligning people, priorities, and expertise around shared goals.</p></div><div class="card-foot">Built together</div></article>
+        <article class="recognition-card"><div class="card-top"><span class="card-index">03 / SCIENCE</span><span class="card-mark" aria-hidden="true">S</span></div><div class="card-content"><h3>Responsible progress</h3><p>Stay curious, make decisions thoughtfully, and keep the purpose of advancing meaningful work in view.</p></div><div class="card-foot">Always learning</div></article>
+      </div>
+    </div></section>
+
+    <section class="standards" aria-labelledby="standards-title"><div class="container standards-layout">
+      <div class="standards-heading"><div class="section-kicker">Our commitment</div><h2 id="standards-title">Evidence over headlines.</h2><p>We believe recognition should be clear, current, and supported by evidence. We aim to communicate our standards and achievements responsibly and transparently.</p><div class="note">For current certification, accreditation, or award details, please contact our team directly.</div></div>
+      <div class="standard-list">
+        <article class="standard-item"><span class="standard-number">01</span><div><h3>Quality systems</h3><p>Maintain practices designed to support consistency, traceability, and continuous improvement.</p></div></article>
+        <article class="standard-item"><span class="standard-number">02</span><div><h3>Regulatory responsibility</h3><p>Approach applicable requirements with rigor and respect for the expectations of the industry.</p></div></article>
+        <article class="standard-item"><span class="standard-number">03</span><div><h3>Partner confidence</h3><p>Earn trust through communication, accountability, and thoughtful execution.</p></div></article>
+        <article class="standard-item"><span class="standard-number">04</span><div><h3>Continuous learning</h3><p>Use experience and feedback to improve how we work and how we serve our partners.</p></div></article>
+      </div>
+    </div></section>
+
+    <section class="closing" aria-labelledby="closing-title"><div class="container closing-inner"><div><div class="eyebrow">Let's connect</div><h2 id="closing-title">Learn more about our approach.</h2><p>Our team can share current information about our capabilities, quality practices, and relevant credentials for your program.</p></div><a class="closing-link" href="index.html#contact">Talk to our team <span aria-hidden="true">→</span></a></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© 2026 PRIVED Life International Pvt Ltd.</span><a href="index.html">Back to home ↑</a></div></footer>
+<script src="header.js"></script>
+</body>
+</html>
